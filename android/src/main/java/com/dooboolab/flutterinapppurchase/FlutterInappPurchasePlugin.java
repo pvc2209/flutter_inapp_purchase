@@ -29,18 +29,21 @@ public class FlutterInappPurchasePlugin implements FlutterPlugin, ActivityAware 
   }
 
   private void onAttached(Context context, BinaryMessenger messenger) {
-    isAndroid = isPackageInstalled(context, "com.android.vending");
-    isAmazon = isPackageInstalled(context, "com.amazon.venezia");
+    // isAndroid = isPackageInstalled(context, "com.android.vending");
+    // isAmazon = isPackageInstalled(context, "com.amazon.venezia");
 
-    // In the case of an amazon device which has been side loaded with the Google Play store,
-    // we should use the store the app was installed from.
-    if (isAmazon && isAndroid) {
-      if (isAppInstalledFrom(context, "amazon")) {
-        isAndroid = false;
-      } else {
-        isAmazon = false;
-      }
-    }
+    // // In the case of an amazon device which has been side loaded with the Google Play store,
+    // // we should use the store the app was installed from.
+    // if (isAmazon && isAndroid) {
+    //   if (isAppInstalledFrom(context, "amazon")) {
+    //     isAndroid = false;
+    //   } else {
+    //     isAmazon = false;
+    //   }
+    // }
+
+    isAmazon = true;
+    isAndroid = false;
 
     channel = new MethodChannel(messenger, "flutter_inapp");
 
